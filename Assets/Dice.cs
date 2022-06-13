@@ -14,7 +14,7 @@ public class Dice : MonoBehaviour
     {
         rend = GetComponent<SpriteRenderer>();
         diceSides = Resources.LoadAll<Sprite>("DiceSides/");
-        rend.sprite = diceSides[6];
+        rend.sprite = diceSides[5];
     }
 
     private void OnMouseDown()
@@ -27,7 +27,6 @@ public class Dice : MonoBehaviour
     {
         coroutineAllowed = false;
         int randomDiceSide = 0;
-
         for (int i = 0; i <= 20; i++)
         {
             randomDiceSide = Random.Range(0,6);
