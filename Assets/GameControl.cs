@@ -36,12 +36,15 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Debug.Log(player1.GetComponent<FollowThePath>().waypointIndex > player1StartWaypoint + diceSideThrown);
         if (player1.GetComponent<FollowThePath>().waypointIndex > player1StartWaypoint + diceSideThrown)
         {
             player1.GetComponent<FollowThePath>().moveAllowed = true;
             player1MoveText.gameObject.SetActive(false);
             player2MoveText.gameObject.SetActive(true);
-            player1StartWaypoint = player1.GetComponent<FollowThePath>().waypointIndex - 1;
+            //Debug.Log(player1StartWaypoint);
+            player1StartWaypoint = player1.GetComponent<FollowThePath>().waypointIndex + 1;
+            //Debug.Log(player1StartWaypoint);
         }
 
         if (player2.GetComponent<FollowThePath>().waypointIndex > player2StartWaypoint + diceSideThrown)
