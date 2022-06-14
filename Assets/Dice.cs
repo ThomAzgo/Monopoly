@@ -19,8 +19,10 @@ public class Dice : MonoBehaviour
 
     private void OnMouseDown()
     {
+        
         if (!GameControl.gameOver && coroutineAllowed)
             StartCoroutine("RollTheDice");
+        
     }
 
     private IEnumerator RollTheDice()

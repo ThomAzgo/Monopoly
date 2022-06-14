@@ -10,7 +10,7 @@ public class FollowThePath : MonoBehaviour
     private float moveSpeed = 1f;
 
     [HideInInspector]
-    public int waypointIndex = 0;
+    public int waypointIndex;
 
     public bool moveAllowed = false;
 
@@ -21,7 +21,7 @@ public class FollowThePath : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         if (moveAllowed)
             Move();
@@ -29,16 +29,15 @@ public class FollowThePath : MonoBehaviour
 
     private void Move()
     {
-        if (waypointIndex <= waypoints.Length - 1)
-        {
-            transform.position = Vector2.MoveTowards(transform.position,
-            waypoints[waypointIndex].transform.position,
-            moveSpeed * Time.deltaTime);
+        if (waypointIndex >= waypoints.Length) return;
+        
+        Transform waypoint = waypoints[waypointIndex];
 
-            if (transform.position == waypoints[waypointIndex].transform.position)
-            {
-                waypointIndex += 1;
-            }
-        }
+        transform.position = Vector2.MoveTowards(transform.position,
+        waypoint.transform.position,
+        moveSpeed * Time.deltaTime);
+
+        if (transform.position == waypoint.transform.position) waypointIndex ++;
+        
     }
 }
